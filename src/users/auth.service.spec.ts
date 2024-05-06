@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { UsersService } from './users.service';
 import { User } from './user.entity';
 import { BadRequestException, NotFoundException } from '@nestjs/common';
+import { UsersController } from './users.controller';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -27,6 +28,7 @@ describe('AuthService', () => {
       },
     };
     const module = await Test.createTestingModule({
+      controllers: [UsersController],
       providers: [
         AuthService,
         {
