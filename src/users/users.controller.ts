@@ -8,7 +8,7 @@ import {
   Query,
   Delete,
   Session,
-  UseGuards
+  UseGuards,
   // NotFoundException,
   // ClassSerializerInterceptor,
 } from '@nestjs/common';
@@ -29,20 +29,6 @@ export class UsersController {
     private authService: AuthService,
   ) {}
 
-  // @Get('/colors/:color')
-  // setColor(@Param('color') color: string, @Session() session: any) {
-  //   session.color = color;
-  // }
-
-  // @Get('/colors')
-  // getColor(@Session() session: any) {
-  //   return session.color;
-  // }
-
-  // @Get('/whoami')
-  //  async whoAmI(@Session() session: any) {
-  //   return this.usersService.findOne(session.userId);
-  // }
   @Get('/whoami')
   @UseGuards(AuthGuard)
   async whoAmI(@CurrentUser() user: User) {
