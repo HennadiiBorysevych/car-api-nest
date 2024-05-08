@@ -4,6 +4,14 @@ import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
 import { UsersService } from '../users.service';
 
+declare global {
+  namespace Express {
+    interface Request {
+      user?: any;
+    }
+  }
+}
+
 @Injectable()
 export class CurrentUserMiddleware implements NestMiddleware {
   constructor(private usersService: UsersService) {}
